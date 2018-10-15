@@ -1,0 +1,47 @@
+control_loop_node:
+  robot_hardware:
+    - youbot_hw_interface
+  loop_frequency: 100
+  cycle_time_error_threshold: 0.1
+  youbot_hw_interface:
+    type: youbot_hwi
+    read_timeout: 0.05 # in seconds
+    scan_timeout: 0.05 # in seconds
+    # Cofniguration of the servos
+    wheels:
+      wheel_link_fl:
+        # hardware ID of the actuator
+        id: 1
+        command_interface: velocity
+      wheel_link_fr:
+        # hardware ID of the actuator
+        id: 2
+        command_interface: velocity
+      wheel_link_bl:
+        # hardware ID of the actuator
+        id: 3
+        command_interface: velocity
+      wheel_link_br:
+        # hardware ID of the actuator
+        id: 4
+        command_interface: velocity
+    # default mode
+    default_command_interface: velocity
+
+youbot_controllers:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  vel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_link_fl
+  vel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_link_fr
+  vel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_link_bl
+  vel_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: wheel_link_br
