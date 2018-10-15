@@ -6,7 +6,7 @@
               disabling hardware interface."/>
 
   <!-- Parameters for the hardware interface and controllers -->
-  <rosparam file="$(find control_loop)/config/sample.yaml"/>
+  <rosparam file="$(find control_loop)/config/sample-dynamixel.yaml"/>
 
   <!-- URDF robot description -->
   <param name="robot_description"
