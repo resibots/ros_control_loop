@@ -198,3 +198,5 @@ target_link_libraries(${PROJECT_NAME}_node
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+## run sudo command to enable direct network access
+## disabled here by default because it is set by Debian postinst command
