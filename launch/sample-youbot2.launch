@@ -27,15 +27,6 @@
     <node pkg="control_loop"
           type="control_loop_node"
           name="control_loop_node" output="screen" clear_params="true"
-          required="true"/>
-
-    <!-- Start a controller for our dummy robot -->
-    <node name="controller" pkg="controller_manager" type="spawner"
-          respawn="false" output="screen" clear_params="true"
-          args="/youbot_controllers/vel_controller_fr
-                /youbot_controllers/vel_controller_fl
-                /youbot_controllers/vel_controller_bl
-                /youbot_controllers/vel_controller_br
-		/youbot_controllers/joint_state_controller" />
+          required="false"/>
   </group>
 </launch>
