@@ -27,7 +27,6 @@ control_loop_node:
         command_interface: velocity
     # default mode
     default_command_interface: velocity
-
 youbot_controllers:
   joint_state_controller:
     type: joint_state_controller/JointStateController

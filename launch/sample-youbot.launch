@@ -6,7 +6,7 @@
               disabling hardware interface."/>
 
   <!-- Parameters for the hardware interface and controllers -->
-  <rosparam file="$(find youbot_hw_interface)/config/sample-youbot.yaml"/>
+  <rosparam file="$(find control_loop)/config/sample-youbot.yaml"/>
 
   <!-- URDF robot description -->
   <param name="robot_description"
@@ -35,7 +35,6 @@
           args="/youbot_controllers/vel_controller_fr
                 /youbot_controllers/vel_controller_fl
                 /youbot_controllers/vel_controller_bl
-                /youbot_controllers/vel_controller_br
-		/youbot_controllers/joint_state_controller" />
+                /youbot_controllers/vel_controller_br" />
   </group>
 </launch>
