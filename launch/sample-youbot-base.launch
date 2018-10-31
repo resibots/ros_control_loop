@@ -32,9 +32,8 @@
     <!-- Start a controller for our dummy robot -->
     <node name="controller" pkg="controller_manager" type="spawner"
           respawn="false" output="screen" clear_params="true"
-          args="/youbot_controllers/vel_controller
-                /youbot_controllers/vel_controller
-                /youbot_controllers/vel_controller
-                /youbot_controllers/joint_state_controller" />
+          args="/youbot_controllers/vel_controller_transversal
+		/youbot_controllers/vel_controller_longitudinal
+		/youbot_controllers/vel_controller_angular"/>
   </group>
 </launch>
