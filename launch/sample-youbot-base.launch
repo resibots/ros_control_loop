@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="fake_robot" default="false"
+         doc="When set to true, assume a fake robot for visualization in rviz,
+              disabling hardware interface."/>
+
+  <!-- Parameters for the hardware interface and controllers -->
+  <rosparam file="$(find youbot_hw_interface)/config/sample-youbot-base.yaml"/>
+
+  <!-- URDF robot description -->
+  <param name="robot_description"
+         command="cat $(find omni_description)/robots/omnigrasper.urdf" />
+  <!-- Publish robot's state in the tf tree -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher"
+        name="rob_state_pub" />
+
+  <!-- To move the dummy robot with a gui, bypassing the controller manager -->
+  <node if="$(arg fake_robot)" pkg="joint_state_publisher"
+    type="joint_state_publisher" name="dummy_robot" />
+
+  <!-- <env name="ROSCONSOLE_CONFIG_FILE"
+    value="/home/dgoepp/.config/ros.org/rosconsole.conf"/> -->
+
+  <!-- launch our hardware interface -->
+  <group unless="$(arg fake_robot)">
+    <node pkg="control_loop"
+          type="control_loop_node"
+          name="control_loop_node" output="screen" clear_params="true"
+          required="true"/>
+
+    <!-- Start a controller for our dummy robot -->
+    <node name="controller" pkg="controller_manager" type="spawner"
+          respawn="false" output="screen" clear_params="true"
+          args="/youbot_controllers/vel_controller
+                /youbot_controllers/vel_controller
+                /youbot_controllers/vel_controller
+                /youbot_controllers/joint_state_controller" />
+  </group>
+</launch>
