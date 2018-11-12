@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="fake_robot" default="false"
+         doc="When set to true, assume a fake robot for visualization in rviz,
+              disabling hardware interface."/>
+
+  <!-- Parameters for the hardware interface and controllers -->
+  <rosparam file="$(find ros_control_loop)/config/youbot_controllers.yaml" command="load"/>
+  <rosparam file="$(find ros_control_loop)/config/youbot_hardware.yaml" command="load"/>
+
+  <!-- URDF robot description -->
+  <param name="robot_description"
+         command="cat $(find omni_description)/robots/omnigrasper.urdf" />
+  <!-- Publish robot's state in the tf tree -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher"
+        name="rob_state_pub" />
+
+  <!-- To move the dummy robot with a gui, bypassing the controller manager -->
+  <node if="$(arg fake_robot)" pkg="joint_state_publisher"
+    type="joint_state_publisher" name="dummy_robot" />
+
+  <!-- <env name="ROSCONSOLE_CONFIG_FILE"
+    value="/home/dgoepp/.config/ros.org/rosconsole.conf"/> -->
+
+  <!-- launch our hardware interface -->
+  <group unless="$(arg fake_robot)">
+    <node pkg="control_loop"
+          type="control_loop_node"
+          name="control_loop_node" output="screen" clear_params="true"
+          required="true"/>
+
+    <!-- Start a controller for our dummy robot -->
+    <node name="combo_control_node" pkg="combo_control" type="combo_control_node" output="screen"/>
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"
+          respawn="false" output="screen" ns="/"
+        args="
+                /comboRobot/controller/vel_controller_fl
+                /comboRobot/controller/vel_controller_fr
+                /comboRobot/controller/vel_controller_bl
+                /comboRobot/controller/vel_controller_br
+                /comboRobot/controller/arm_state
+                /comboRobot/controller/youbot_state" />
+  </group>
+</launch>
