@@ -35,7 +35,8 @@ control_loop_node:
         id: 5
         max_speed: 0.2
         offset: 3.14159265359
-
+    default_command_interface: velocity
+    
   youbot_hw_interface:
     type: youbot_hwi
     read_timeout: 0.05 # in seconds
