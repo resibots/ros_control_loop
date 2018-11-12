@@ -6,8 +6,8 @@
               disabling hardware interface."/>
 
   <!-- Parameters for the hardware interface and controllers -->
-  <rosparam file="$(find control_loop)/config/youbot_controllers.yaml" command="load"/>
-  <rosparam file="$(find control_loop)/config/youbot_hardware.yaml" command="load"/>
+  <rosparam file="$(find control_loop)/config/youbot_controllers.yaml"/>
+  <rosparam file="$(find control_loop)/config/youbot_hardware.yaml" />
 
   <!-- URDF robot description -->
   <param name="robot_description"
