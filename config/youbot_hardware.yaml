@@ -6,7 +6,7 @@ control_loop_node:
   cycle_time_error_threshold: 0.1
 
   dynamixel_control:
-    type: dynamixel
+    type: dynamixel/hardware_interface_p2
     loop_frequency: 100
     cycle_time_error_threshold: 0.05
     serial_interface: /dev/ttyUSB0
