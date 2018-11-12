@@ -32,15 +32,15 @@ comboRobot:
         type: joint_state_controller/JointStateController
         publish_rate: 50
 
-    vel_controller_fl:
-      type: velocity_controllers/JointVelocityController
-      joint: wheel_joint_fl
-    vel_controller_fr:
-      type: velocity_controllers/JointVelocityController
-      joint: wheel_joint_fr
-    vel_controller_bl:
-      type: velocity_controllers/JointVelocityController
-      joint: wheel_joint_bl
-    vel_controller_br:
-      type: velocity_controllers/JointVelocityController
-      joint: wheel_joint_br
+      vel_controller_fl:
+        type: velocity_controllers/JointVelocityController
+        joint: wheel_joint_fl
+      vel_controller_fr:
+        type: velocity_controllers/JointVelocityController
+        joint: wheel_joint_fr
+      vel_controller_bl:
+        type: velocity_controllers/JointVelocityController
+        joint: wheel_joint_bl
+      vel_controller_br:
+        type: velocity_controllers/JointVelocityController
+        joint: wheel_joint_br
