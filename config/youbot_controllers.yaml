@@ -2,62 +2,62 @@ comboRobot:
   youbot_hw_interface:
     hardware_interface:
       wheels:
-        - wheel_link_fl:
-        - wheel_link_fr:
-        - wheel_link_bl:
-        - wheel_link_br:
+        - wheel_link_fl
+        - wheel_link_fr
+        - wheel_link_bl
+        - wheel_link_br
 
   dynamixel_control:
     hardware_interface:
       servos:
-        - arm_0_1:
-        - arm_1_2:
-        - arm_2_3:
-        - arm_3_4:
-        - arm_4_5:
+        - arm_0_1
+        - arm_1_2
+        - arm_2_3
+        - arm_3_4
+        - arm_4_5
 
-controller:
+  controller:
 
-youbot_controllers:
-  youbot_state:
-    type: joint_state_controller/JointStateController
-    publish_rate: 50
-    joints:
-      - wheel_joint_bl
-      - wheel_joint_br
-      - wheel_joint_fl
-      - wheel_joint_fr
+    youbot_controllers:
+      youbot_state:
+        type: joint_state_controller/JointStateController
+        publish_rate: 50
+        joints:
+          - wheel_joint_bl
+          - wheel_joint_br
+          - wheel_joint_fl
+          - wheel_joint_fr
 
-  arm_state:
-    type: joint_state_controller/JointStateController
-    publish_rate: 50
+      arm_state:
+        type: joint_state_controller/JointStateController
+        publish_rate: 50
 
-  omni_arm_controller: # Safety limits for some controllers used with the arm
-    min_heights:
-      - # height limit to protect the arm and the mobile base from each other
-        x_min: -0.18
-        y_min: -0.30
-        x_max: 0.50
-        y_max: 0.30
-        # hard_min_height: 0.15
-        # soft_min_height: 0.20
-        hard_min_height: 0.20
-        soft_min_height: 0.25
-      - # the general height limit, applies everywhere
-        # hard_min_height: -0.16
-        # soft_min_height: -0.07
-        hard_min_height: -0.12
-        soft_min_height: -0.04
+    omni_arm_controller: # Safety limits for some controllers used with the arm
+      min_heights:
+        - # height limit to protect the arm and the mobile base from each other
+          x_min: -0.18
+          y_min: -0.30
+          x_max: 0.50
+          y_max: 0.30
+          # hard_min_height: 0.15
+          # soft_min_height: 0.20
+          hard_min_height: 0.20
+          soft_min_height: 0.25
+        - # the general height limit, applies everywhere
+          # hard_min_height: -0.16
+          # soft_min_height: -0.07
+          hard_min_height: -0.12
+          soft_min_height: -0.04
 
-  vel_controller_fl:
-    type: velocity_controllers/JointVelocityController
-    joint: wheel_joint_fl
-  vel_controller_fr:
-    type: velocity_controllers/JointVelocityController
-    joint: wheel_joint_fr
-  vel_controller_bl:
-    type: velocity_controllers/JointVelocityController
-    joint: wheel_joint_bl
-  vel_controller_br:
-    type: velocity_controllers/JointVelocityController
-    joint: wheel_joint_br
+    vel_controller_fl:
+      type: velocity_controllers/JointVelocityController
+      joint: wheel_joint_fl
+    vel_controller_fr:
+      type: velocity_controllers/JointVelocityController
+      joint: wheel_joint_fr
+    vel_controller_bl:
+      type: velocity_controllers/JointVelocityController
+      joint: wheel_joint_bl
+    vel_controller_br:
+      type: velocity_controllers/JointVelocityController
+      joint: wheel_joint_br

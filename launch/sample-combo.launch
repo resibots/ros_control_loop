@@ -9,7 +9,7 @@
   <rosparam file="$(find control_loop)/config/youbot_controllers.yaml"/>
   <rosparam file="$(find control_loop)/config/youbot_hardware.yaml" />
 
-  <!-- URDF robot description -->
+  <!-- URDF robot description --> 
   <param name="robot_description"
          command="cat $(find omni_description)/robots/omnigrasper.urdf" />
   <!-- Publish robot's state in the tf tree -->
@@ -27,14 +27,11 @@
   <group unless="$(arg fake_robot)">
     <node pkg="control_loop"
           type="control_loop_node"
-          name="control_loop_node" output="screen" clear_params="true"
+          name="control_loop_node" output="screen" clear_params="false"
           required="true"/>
 
-    <node name="dynamixel_control" pkg="dynamixel_control_hw"
-        type="dynamixel_control_p2" output="screen" clear_params="true"
-                required="true"/>
     <!-- Start a controller for our dummy robot -->
-    <node name="combo_control_node" pkg="combo_control" type="combo_control_node" output="screen"/>
+   
     <node name="controller_spawner" pkg="controller_manager" type="spawner"
           respawn="false" output="screen" ns="/"
         args="
@@ -44,5 +41,5 @@
                 /comboRobot/controller/vel_controller_br
                 /comboRobot/controller/arm_state
                 /comboRobot/controller/youbot_state" />
-  </group>
+  </group>	
 </launch>
