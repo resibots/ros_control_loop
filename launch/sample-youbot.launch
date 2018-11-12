@@ -32,10 +32,10 @@
     <!-- Start a controller for our dummy robot -->
     <node name="controller" pkg="controller_manager" type="spawner"
           respawn="false" output="screen" clear_params="true"
-          args="/youbot_controllers/vel_controller
-                /youbot_controllers/vel_controller
-                /youbot_controllers/vel_controller
-                /youbot_controllers/vel_controller
+          args="/youbot_controllers/vel_controller_fl
+                /youbot_controllers/vel_controller_fr
+                /youbot_controllers/vel_controller_bl
+                /youbot_controllers/vel_controller_br
                 /youbot_controllers/joint_state_controller" />
   </group>
 </launch>

@@ -34,6 +34,7 @@
           respawn="false" output="screen" clear_params="true"
           args="/youbot_controllers/vel_controller_transversal
 		/youbot_controllers/vel_controller_longitudinal
+		/youbot_controllers/joint_state_controller
 		/youbot_controllers/vel_controller_angular"/>
   </group>
 </launch>
