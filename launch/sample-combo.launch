@@ -6,8 +6,8 @@
               disabling hardware interface."/>
 
   <!-- Parameters for the hardware interface and controllers -->
-  <rosparam file="$(find ros_control_loop)/config/youbot_controllers.yaml" command="load"/>
-  <rosparam file="$(find ros_control_loop)/config/youbot_hardware.yaml" command="load"/>
+  <rosparam file="$(find control_loop)/config/youbot_controllers.yaml" command="load"/>
+  <rosparam file="$(find control_loop)/config/youbot_hardware.yaml" command="load"/>
 
   <!-- URDF robot description -->
   <param name="robot_description"
@@ -30,6 +30,9 @@
           name="control_loop_node" output="screen" clear_params="true"
           required="true"/>
 
+    <node name="dynamixel_control" pkg="dynamixel_control_hw"
+        type="dynamixel_control_p2" output="screen" clear_params="true"
+                required="true"/>
     <!-- Start a controller for our dummy robot -->
     <node name="combo_control_node" pkg="combo_control" type="combo_control_node" output="screen"/>
     <node name="controller_spawner" pkg="controller_manager" type="spawner"
