@@ -36,26 +36,26 @@ control_loop_node:
         max_speed: 0.2
         offset: 3.14159265359
     default_command_interface: velocity
-    
+
   youbot_hw_interface:
     type: youbot_hwi
     read_timeout: 0.05 # in seconds
     scan_timeout: 0.05 # in seconds
     # Cofniguration of the servos
     wheels:
-      wheel_link_fl:
+      wheel_joint_fl:
         # hardware ID of the actuator
         id: 0
         command_interface: velocity
-      wheel_link_fr:
+      wheel_joint_fr:
         # hardware ID of the actuator
         id: 1
         command_interface: velocity
-      wheel_link_bl:
+      wheel_joint_bl:
         # hardware ID of the actuator
         id: 2
         command_interface: velocity
-      wheel_link_br:
+      wheel_joint_br:
         # hardware ID of the actuator
         id: 3
         command_interface: velocity
